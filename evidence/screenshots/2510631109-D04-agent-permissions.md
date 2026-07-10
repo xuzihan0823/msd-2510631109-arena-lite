@@ -46,7 +46,3 @@ pytest 结果：1 passed
 ## 辅助截图
 
 - `evidence/screenshots/2510631109-D04-agent-rules.png`：展示 Agent 读取规则并复述边界、执行复测的会话过程。
-
-## 安全说明
-
-截图中 Key 应为空、隐藏或未展示；本说明文件不包含真实 API Key、Token、密码、支付信息、私有地址或个人敏感信息。
