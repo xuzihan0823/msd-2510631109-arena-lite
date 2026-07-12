@@ -5,7 +5,7 @@
 - 范围：集中期 M 阶段，只覆盖 US-1、US-2；不实现业务代码。
 - PRD 来源：`docs/PRD.md`
 - 参考对齐：`references/arena-lite-参考规格.md`
-- 变更原则：D10 起，路径、字段、状态码、ELO 参数和状态迁移只能根据测试日志、接口响应或课程参考证据修订，并同步更新 PRD Traceability。
+- 变更原则：D07 已依据课程 D10 主链路将本地鉴权细化为 role test token + Bearer header；D10 起，路径、字段、状态码、ELO 参数和状态迁移只能根据测试日志、接口响应或课程参考证据修订，并同步更新 PRD Traceability。
 
 ## 1. 产品范围、角色与非目标
 
@@ -39,7 +39,7 @@
 | 实体 | 必需字段 | 约束 |
 |---|---|---|
 | Contestant | `model_id`、`name`、`elo`、`wins`、`losses`、`draws`、`battles` | 初始 `elo=1500`，最低为 100；示例为 `2510631109-model-alpha`、`2510631109-model-beta` |
-| Battle | `battle_id`、`prompt`、`contestant_a_id`、`contestant_b_id`、`answer_a`、`answer_b`、`status`、`error_message` | 两名 Contestant 必须不同；示例 battle 为 `2510631109-battle-demo-01` |
+| Battle | `battle_id`、`prompt`、`contestant_a_id`、`contestant_b_id`、`answer_a`、`answer_b`、`status`、`required_votes`、`vote_count`、`error_message` | 两名 Contestant 必须不同；M 阶段 `required_votes=1`，初始 `vote_count=0`；示例 battle 为 `2510631109-battle-demo-01` |
 | Vote | `battle_id`、`voter_id`、`choice` | `(battle_id, voter_id)` 唯一；`choice` 只能为 `A` 或 `B` |
 
 ### 2.2 状态机
@@ -70,12 +70,12 @@ answering -> aborted
 
 | 方法与路径 | 权限 | 请求字段 | 响应字段 | 成功状态码 | 失败状态码 |
 |---|---|---|---|---|---|
-| `POST /login` | 公开，仅预置用户 | `preset_user_id`，示例为 `2510631109-user-demo` | `role`、演示身份结果 | `200` | `401` |
-| `POST /battles` | admin | 头 `X-2510631109-User: 2510631109-admin-demo`；体 `prompt`、`contestant_a_id`、`contestant_b_id` | `battle_id`、`status` | `201` | `401`、`422` |
-| `GET /battles/{battle_id}` | voter | 路径 `battle_id`；头 `X-2510631109-User: 2510631109-user-demo` | ready 时为 `question`、匿名 `answer_a`、匿名 `answer_b`、`status`；scored 时额外为 `result`、`votes`、双方 ELO 变化 | `200` | `401`、`404` |
-| `POST /battles/{battle_id}/vote` | voter | 路径 `battle_id`；头 `X-2510631109-User: 2510631109-user-demo`；体 `choice` | `battle_id`、`status=voted`、`vote_id`；不含模型身份或 ELO | `200` | `401`、`404`、`409`、`422` |
-| `POST /battles/{battle_id}/settle` | admin | 路径 `battle_id`；头 `X-2510631109-User: 2510631109-admin-demo` | `status=scored`、A/B 身份、票数、双方 `elo_before`、`elo_after`、`elo_delta` | `200` | `401`、`404`、`409` |
-| `GET /leaderboard` | voter | 头 `X-2510631109-User: 2510631109-user-demo` | 每行 `rank`、`name`、`elo`、`wins`、`losses`、`draws`、`battles` | `200` | `401` |
+| `POST /login` | 公开，仅本地测试 | `{ "role": "admin" | "voter" }` | `token`、`role` | `200`；admin 返回 `local-admin-token`，voter 返回 `local-voter-token` | `401` |
+| `POST /battles` | admin | 头 `Authorization: Bearer local-admin-token`；体 `prompt`、`contestant_a_id`、`contestant_b_id` | `battle_id`、`status` | `201` | `401`、`422` |
+| `GET /battles/{battle_id}` | voter | 路径 `battle_id`；头 `Authorization: Bearer local-voter-token` | ready 时为 `question`、匿名 `answer_a`、匿名 `answer_b`、`status`、`vote_count`、`required_votes`；scored 时额外为 `result`、`votes`、双方 ELO 变化 | `200` | `401`、`404` |
+| `POST /battles/{battle_id}/vote` | voter | 路径 `battle_id`；头 `Authorization: Bearer local-voter-token`；体 `choice` | `battle_id`、`vote_id`、`choice`、`vote_count`、`required_votes`、`status=voted`；不含模型身份或 ELO | `200` | `401`、`404`、`409`、`422` |
+| `POST /battles/{battle_id}/settle` | admin | 路径 `battle_id`；头 `Authorization: Bearer local-admin-token` | `status=scored`、A/B 身份、票数、双方 `elo_before`、`elo_after`、`elo_delta` | `200` | `401`、`404`、`409` |
+| `GET /leaderboard` | voter | 头 `Authorization: Bearer local-voter-token`；可选 query `limit`，默认 20 | `{ "items": [...] }`；每行 `rank`、`model_id`、`name`、`elo`、`wins`、`losses`、`draws`、`battles` | `200` | `401` |
 
 ### 4.1 匿名与揭盲约束
 
@@ -96,7 +96,7 @@ answering -> aborted
 | AC-1.5 | voter 对 `answering`、`aborted` 或 `scored` battle 投票 | `409` 与状态说明；不改状态、不结算 ELO |
 | AC-2.1 | 默认阈值 1 达到后，admin 调用 `POST /battles/{battle_id}/settle` | `200`，状态 `voted -> scored`；返回揭盲身份、票数和双方新 ELO |
 | AC-2.2 | 两个 Contestant 初始均为 1500、A 胜、K=32 | A 为 1516，B 为 1484；变化量代数和为 0，任何 ELO 不低于 100 |
-| AC-2.3 | voter 调用 `GET /leaderboard` | `200`；按 ELO 降序；每行含 `name`、`elo`、`wins`、`losses`、`draws`、`battles`；同分按 `model_id` 字典序稳定排序 |
+| AC-2.3 | voter 调用 `GET /leaderboard`，可传 `limit`，默认 20 | `200`；返回 `{ "items": [...] }`，按 ELO 降序；每行含 `rank`、`model_id`、`name`、`elo`、`wins`、`losses`、`draws`、`battles`；同分按 `model_id` 字典序稳定排序 |
 | AC-2.4 | admin 对已 scored battle 再次调用 settle | `409`，状态机拒绝非法迁移，ELO 和榜单不变 |
 
 ## 6. 错误路径
@@ -131,7 +131,7 @@ answering -> aborted
 - 期望胜率：`E_A = 1 / (1 + 10 ^ ((R_B - R_A) / 400))`，`E_B = 1 - E_A`。
 - 当 voter 选择 A 时，A 的实际得分为 1，B 的实际得分为 0；选择 B 时对称处理。
 - 结算只发生在 `voted -> scored` 的一次合法 settle 中。重复投票、错误投票、失败 battle 或重复 settle 均不结算。
-- 使用半入向上取整计算胜方增量 `g = round_half_up(32 × (1 - E_winner))`；胜方变化为 `+g`，负方变化为 `-g`，因此双方变化量代数和恒为 0。
+- 使用半入向上取整计算理论胜方增量 `theoretical_delta = round_half_up(32 × (1 - E_winner))`；先计算 `new_loser = max(100, loser_elo - theoretical_delta)`，再计算 `applied_delta = loser_elo - new_loser` 与 `new_winner = winner_elo + applied_delta`。因此胜方变化为 `+applied_delta`、负方变化为 `-applied_delta`，双方变化量代数和恒为 0 且负方不会低于 100。
 - 两方同为 1500 且 A 胜时：A 从 1500 变为 1516，B 从 1500 变为 1484。
 - 排行榜按 `elo` 降序；同分按 `model_id` 字典序升序稳定排序。
 
@@ -149,5 +149,6 @@ answering -> aborted
 
 - SPEC v1 在 `process/spec-review-2510631109.md` 的 Loop-1 中记录了差距：投票即揭盲、缺少创建/settle 边界、正式错误路径不足、排行榜字段不足。
 - 本 SPEC v1.1 对齐 `references/arena-lite-参考规格.md`，明确采用 `created -> answering -> ready -> voted -> scored` 与 `answering -> aborted`。
+- D07 设计对齐课程 D10 主链路：`POST /login` 接收 role 并返回本地测试 token；受保护端点使用 `Authorization: Bearer`。这不会引入注册、真实账号、密码或真实凭据。
 - D10 只能以本 v1.1 的验收标准和错误路径先写测试，再实现满足测试的最小业务代码。
 - 若未来测试、接口响应或课程更新证明本契约需要调整，必须在 `process/spec-review-2510631109.md` 中写明原因、证据和受影响的 PRD Traceability。
