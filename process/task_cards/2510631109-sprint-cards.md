@@ -6,7 +6,7 @@
 - 范围：仅 US-1（发起对战并盲投）与 US-2（揭盲、ELO 和排行榜）；不在本文件写业务实现代码。
 - 任务卡生成角色：`pm-2510631109` / `architect-2510631109` / `qa-2510631109`。
 - 生成模型：Hermes Agent `gpt-5.6-terra`。
-- 复核状态：已获用户授权尝试 Claude Code 独立只读复核，但 Provider 返回 `401 无效的令牌`，未产生审查结论；不得声称已完成严格多模型复核。完整阻断记录见 `evidence/2510631109-D09-task-card-review.md`。
+- 复核状态：严格多模型复核已完成。Hermes Agent `gpt-5.6-terra` 生成任务卡；Claude Code 2.1.209 的 Opus 4.8（1M context）以 `reviewer-2510631109` 身份完成独立只读复核，结论为 `PASS`、无阻断问题。截图为 `evidence/screenshots/2510631109-D09-claude-review.png`，完整记录见 `evidence/2510631109-D09-task-card-review.md`；此前无费用的 Provider 401 尝试仅保留为历史审计记录。
 
 ## 任务卡
 
