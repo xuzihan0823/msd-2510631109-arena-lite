@@ -42,5 +42,9 @@
 ## 验收与限制
 
 - curl 主路径与错误路径的真实 HTTP 状态码输出见 `evidence/2510631109-D10-curl-status.txt`。
-- Agent 的本次实现由 Hermes 完成；独立不同模型的 D10 代码复核未在本会话调用。D09 的 Claude 截图仅证明 D09 任务卡复核，不应冒充 D10 代码复核。
+- Agent 的本次实现由 Hermes 完成；在本会话的初始记录阶段，独立不同模型的 D10 代码复核尚未调用。D09 的 Claude 截图仅证明 D09 任务卡复核，不应冒充 D10 代码复核。
 - 本记录不含真实凭据；本地演示 token 未写入正文。
+
+## 后续证据对账
+
+用户后来补充了 Claude Code `v2.1.209` / `Opus 4.8 (1M context)` 的 D10 成功交互式只读复核截图。该复核结论为 **PASS WITH NOTES**，无 P0/P1/P2；截图与说明页、完整结论和 P3 注意项见 `evidence/2510631109-D10-code-review.md` 及 `evidence/screenshots/2510631109-D10-claude-code-review-2.md`。这条后续成功证据不会抹除本记录中“初始外部调用未执行”的真实时间线。
