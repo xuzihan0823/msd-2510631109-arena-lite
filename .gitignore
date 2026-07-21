@@ -6,3 +6,13 @@ __pycache__/
 .env
 *.key
 *.pem
+
+# LaunchSpec AI is a nested Next.js project in this course repository.
+**/node_modules/
+**/.next/
+**/.env*
+!**/.env.example
+**/coverage/
+**/*.tsbuildinfo
+**/next-env.d.ts
+projects/launchspec-ai/data/launchspec.json

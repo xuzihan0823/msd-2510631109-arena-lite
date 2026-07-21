@@ -1,0 +1,20 @@
+
+> msd-launchspec-ai@0.1.0 dev
+> next dev --hostname 127.0.0.1 --port 3012
+
+▲ Next.js 16.2.10 (Turbopack)
+- Local:         http://127.0.0.1:3012
+- Network:       http://127.0.0.1:3012
+✓ Ready in 194ms
+
+ GET /api/health 200 in 188ms (next.js: 176ms, application-code: 12ms)
+ GET /api/health 200 in 4ms (next.js: 1664µs, application-code: 2ms)
+ POST /api/projects 400 in 48ms (next.js: 44ms, application-code: 5ms)
+ POST /api/projects 201 in 5ms (next.js: 943µs, application-code: 4ms)
+ POST /api/projects/ea3c1b48-d118-4c27-be11-56bf10379d5f/generate 200 in 428ms (next.js: 421ms, application-code: 7ms)
+ GET /api/projects/ea3c1b48-d118-4c27-be11-56bf10379d5f 200 in 426ms (next.js: 422ms, application-code: 4ms)
+ PUT /api/projects/ea3c1b48-d118-4c27-be11-56bf10379d5f 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/projects/ea3c1b48-d118-4c27-be11-56bf10379d5f/review 200 in 422ms (next.js: 417ms, application-code: 5ms)
+ GET /api/projects/ea3c1b48-d118-4c27-be11-56bf10379d5f/export 200 in 425ms (next.js: 420ms, application-code: 5ms)
+ GET /api/projects/not-a-real-project 404 in 5ms (next.js: 3ms, application-code: 2ms)
+[?25h
