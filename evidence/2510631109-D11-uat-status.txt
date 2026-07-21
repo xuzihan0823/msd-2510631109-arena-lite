@@ -1,0 +1,27 @@
+platform=macOS native terminal; WSL2=N/A
+service=http://127.0.0.1:8124
+commit=63d071a
+login_admin=200
+login_voter=200
+missing_battle_id=2510631109-d11-missing-1784360028
+health=200
+not_found=404
+create_battle=201
+battle_id=2510631109-battle-8eca11cea8
+anonymous_view=200
+anonymous_view_contract=pass
+vote_first=200
+vote_repeat=409
+settle_wrong_role=401
+settle=200
+leaderboard=200
+settlement_elo_1516_1484=pass
+leaderboard_descending_elo=pass
+vote_after_settle=409
+settle_repeat=409
+empty_prompt=422
+missing_auth=401
+self_battle=422
+wrong_role_create=401
+model_failure_mock=pass
+uat_result=pass
