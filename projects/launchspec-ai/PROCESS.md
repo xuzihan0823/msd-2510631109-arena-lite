@@ -4,7 +4,7 @@
 
 - 项目名称：LaunchSpec AI
 - 正式交付标识：待课程公布 `MSD_GROUP_ID` 后确认，见 `docs/PROJECT-IDENTITY.md`。
-- 本地代码目录：`/Users/mac/code/msd-launchspec-ai`
+- 本地代码目录：`projects/launchspec-ai/`（本仓库相对路径）
 - 当前 provider：默认 `demo`；这不是真实模型调用证据。
 
 ## 需求、规格与设计

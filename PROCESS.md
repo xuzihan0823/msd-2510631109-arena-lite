@@ -37,7 +37,7 @@
 - API smoke evidence（API 冒烟证据）: `evidence/2510631109-D11-uat-status.txt`
 - Model failure mock evidence（模型失败 mock 证据）: `evidence/2510631109-D11-model-failure-mock.txt`
 - Security scan evidence（安全扫描证据）: `evidence/2510631109-D11-secret-scan.txt`
-- Latest passing commit（最近通过的提交）: `63d071a`；D11 本地验证在该提交的工作树上完成，D11 证据尚待用户授权提交。
+- D11 verification baseline（D11 验证基线）: `63d071a`；D11 本地验证在该提交的工作树上完成。D11 证据已提交为 `5dc11fb` 并推送至 `origin/feat/2510631109-local-ci`。
 
 ## Known Limits（已知限制）
 
