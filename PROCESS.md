@@ -50,7 +50,7 @@
 
 - One decision changed during implementation（实现中变更过的一项决策）: 鉴权从早期草案的自定义演示头收敛为 `POST /login` 返回角色对应的本地演示身份，并对受保护接口统一使用标准 Authorization Bearer 请求头；决策与契约对齐记录见 `process/spec-review-2510631109.md`。
 - One test that best proves quality（最能证明质量的一项测试）: `tests/test_api_contract.py::test_vote_settle_and_leaderboard_handle_main_and_error_paths`，覆盖投票、重复投票、错误角色结算、结算、重复结算、结算后投票、ELO 与排行榜排序。
-- One AI-generated change reviewed manually（人工复核过的一项 AI 生成修改）: 待人工完成。已准备只读复核模板 `process/review/2510631109-human-review-template.md`，其固定复核 `71fd253` 的 API、状态机、ELO、存储与测试范围；在真人填写、复跑命令并提交前，不作此项完成声明。
+- One AI-generated change reviewed manually（人工复核过的一项 AI 生成修改）: 已完成。本人已对 AI 辅助提交 `71fd253` 的 API、状态机、ELO、存储与测试完成手工确认；独立 AI reviewer 的实质分析与本人确认均记录于 `process/review/2510631109-human-review.md`。全量测试 `22 passed`、目标契约测试 `1 passed`，结论为 `PASS WITH NOTES`。
 
 ## Security Note（安全说明）
 
