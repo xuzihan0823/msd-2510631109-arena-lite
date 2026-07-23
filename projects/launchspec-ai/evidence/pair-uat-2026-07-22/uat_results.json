@@ -1,0 +1,186 @@
+{
+  "generated_at": "2026-07-22T07:07:27.500474Z",
+  "base_url": "http://127.0.0.1:3000",
+  "total": 22,
+  "passed": 22,
+  "failed": 0,
+  "results": [
+    {
+      "id": "PRE-01",
+      "step": "GET /api/health status=ok provider.ready=true",
+      "status": "PASS",
+      "detail": "{\"status\": \"ok\", \"storage\": \"local-json\", \"provider\": {\"mode\": \"demo\", \"ready\": true}}",
+      "ms": 26,
+      "screenshot": ""
+    },
+    {
+      "id": "A-01",
+      "step": "首页加载 + provider 状态显示",
+      "status": "PASS",
+      "detail": "demo · 可用",
+      "ms": 6487,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706494898_A01_homepage.png"
+    },
+    {
+      "id": "A-02",
+      "step": "边界:名称1字符+内容过短 HTML5阻止提交",
+      "status": "PASS",
+      "detail": "form not submitted",
+      "ms": 758,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706509576_A02_boundary_name_1char.png"
+    },
+    {
+      "id": "A-03",
+      "step": "边界:idea 19字符(minLength=20)阻止提交",
+      "status": "PASS",
+      "detail": "minLength blocks submit",
+      "ms": 524,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706514665_A03_boundary_idea_19chars.png"
+    },
+    {
+      "id": "A-04",
+      "step": "有效创建项目想法 notice=已保存",
+      "status": "PASS",
+      "detail": "name=UAT对偶会话测试-2026-07-22",
+      "ms": 731,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706516850_A04_after_create.png"
+    },
+    {
+      "id": "A-05",
+      "step": "生成蓝图(demo) notice=已生成可编辑demo草案",
+      "status": "PASS",
+      "detail": "blueprint generated",
+      "ms": 1200,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706530970_A05_after_generate.png"
+    },
+    {
+      "id": "A-06",
+      "step": "蓝图编辑器核心板块可见",
+      "status": "PASS",
+      "detail": "found=['MVP', '验收标准', '非目标', '风险', '架构']",
+      "ms": 118,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706534931_A06_blueprint_sections.png"
+    },
+    {
+      "id": "A-07",
+      "step": "人工编辑蓝图字段",
+      "status": "PASS",
+      "detail": "textarea edited",
+      "ms": 137,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706536224_A07_after_edit.png"
+    },
+    {
+      "id": "A-08",
+      "step": "保存编辑 notice=方案已保存",
+      "status": "PASS",
+      "detail": "save ok",
+      "ms": 943,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706545616_A08_after_save.png"
+    },
+    {
+      "id": "A-09",
+      "step": "执行审查 notice=规则检查已完成",
+      "status": "PASS",
+      "detail": "demo rules review",
+      "ms": 939,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706555007_A09_after_review.png"
+    },
+    {
+      "id": "A-10",
+      "step": "导出Markdown GET/export 返回.md内容",
+      "status": "PASS",
+      "detail": "len=1199",
+      "ms": 469,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/export_sample.md"
+    },
+    {
+      "id": "A-11",
+      "step": "Session A 刷新后项目仍在侧边栏",
+      "status": "PASS",
+      "detail": "persisted=True",
+      "ms": 817,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706568004_A11_after_reload.png"
+    },
+    {
+      "id": "A-12",
+      "step": "刷新后手工编辑内容持久化",
+      "status": "PASS",
+      "detail": "edit persisted=True",
+      "ms": 1168,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706579599_A12_edit_persisted.png"
+    },
+    {
+      "id": "B-01",
+      "step": "Session B 独立context打开首页",
+      "status": "PASS",
+      "detail": "independent context ok",
+      "ms": 900,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706589912_B01_homepage.png"
+    },
+    {
+      "id": "B-02",
+      "step": "Session B 能读到Session A创建的项目",
+      "status": "PASS",
+      "detail": "visible=True",
+      "ms": 109,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0706591173_B02_sees_A_project.png"
+    },
+    {
+      "id": "B-03",
+      "step": "Session B 能看到Session A保存的手工编辑",
+      "status": "PASS",
+      "detail": "edit in B=True",
+      "ms": 1177,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0707002525_B03_sees_A_edit.png"
+    },
+    {
+      "id": "B-04",
+      "step": "Session B 独立执行审查 notice=规则检查已完成",
+      "status": "PASS",
+      "detail": "B review ok",
+      "ms": 186,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0707004521_B04_review_done.png"
+    },
+    {
+      "id": "B-05",
+      "step": "Session B 刷新后审查结果持久化",
+      "status": "PASS",
+      "detail": "review in DOM=True",
+      "ms": 1838,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/screenshots/0707023127_B05_review_persisted.png"
+    },
+    {
+      "id": "C-01",
+      "step": "并发写A先B后 last-write-wins B应覆盖A",
+      "status": "PASS",
+      "detail": "B_won=True",
+      "ms": 1017,
+      "screenshot": "/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai/evidence/pair-uat-2026-07-22/concurrent_final_state.json"
+    },
+    {
+      "id": "E-01",
+      "step": "GET /projects/{invalid} 404",
+      "status": "PASS",
+      "detail": "HTTP 404",
+      "ms": 8,
+      "screenshot": ""
+    },
+    {
+      "id": "E-02",
+      "step": "POST /projects {} 400/422",
+      "status": "PASS",
+      "detail": "HTTP 400: {'error': 'name 必须是文本'}",
+      "ms": 7,
+      "screenshot": ""
+    },
+    {
+      "id": "E-03",
+      "step": "POST /projects name=121chars 400/422",
+      "status": "PASS",
+      "detail": "HTTP 400: {'error': 'name 长度必须在 2 到 120 个字符之间'}",
+      "ms": 6,
+      "screenshot": ""
+    }
+  ],
+  "console_errors": []
+}
