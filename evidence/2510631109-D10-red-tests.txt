@@ -1,0 +1,83 @@
+
+==================================== ERRORS ====================================
+______________________ ERROR collecting tests/test_elo.py ______________________
+ImportError while importing test module '/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/tests/test_elo.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/miniconda3/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_elo.py:1: in <module>
+    from app.domain.elo import update_elo
+E   ModuleNotFoundError: No module named 'app.domain'
+_________________ ERROR collecting tests/test_battle_state.py __________________
+ImportError while importing test module '/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/tests/test_battle_state.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/miniconda3/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_battle_state.py:3: in <module>
+    from app.domain.battle import IllegalStateTransition, transition
+E   ModuleNotFoundError: No module named 'app.domain'
+____________________ ERROR collecting tests/test_pairing.py ____________________
+ImportError while importing test module '/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/tests/test_pairing.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/miniconda3/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_pairing.py:5: in <module>
+    from app.domain.pairing import SameContestantError, assign_slots, validate_distinct_contestants
+E   ModuleNotFoundError: No module named 'app.domain'
+_________________ ERROR collecting tests/test_model_adapter.py _________________
+ImportError while importing test module '/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/tests/test_model_adapter.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/miniconda3/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_model_adapter.py:1: in <module>
+    from app.adapters.models import MockModelAdapter
+E   ModuleNotFoundError: No module named 'app.adapters'
+____________________ ERROR collecting tests/test_storage.py ____________________
+ImportError while importing test module '/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/tests/test_storage.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/miniconda3/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_storage.py:3: in <module>
+    from app.storage.repository import ArenaStore, DuplicateVoteError
+E   ModuleNotFoundError: No module named 'app.storage'
+_________________ ERROR collecting tests/test_api_contract.py __________________
+ImportError while importing test module '/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/tests/test_api_contract.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/miniconda3/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_api_contract.py:4: in <module>
+    from app.main import app, reset_for_tests
+E   ImportError: cannot import name 'reset_for_tests' from 'app.main' (/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/app/main.py)
+_________________ ERROR collecting tests/test_client_smoke.py __________________
+ImportError while importing test module '/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/tests/test_client_smoke.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/miniconda3/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_client_smoke.py:4: in <module>
+    from app.main import app, reset_for_tests
+E   ImportError: cannot import name 'reset_for_tests' from 'app.main' (/Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/app/main.py)
+=========================== short test summary info ============================
+ERROR tests/test_elo.py
+ERROR tests/test_battle_state.py
+ERROR tests/test_pairing.py
+ERROR tests/test_model_adapter.py
+ERROR tests/test_storage.py
+ERROR tests/test_api_contract.py
+ERROR tests/test_client_smoke.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 7 errors during collection !!!!!!!!!!!!!!!!!!!!
+7 errors in 0.33s
+red_exit_code=2
