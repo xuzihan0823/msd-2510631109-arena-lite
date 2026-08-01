@@ -93,7 +93,7 @@ npm run dev
 
 | Gate | 记录 | 结论 | 未满足项 |
 |---|---|---|---|
-| Gate 1 PRD/SPEC 互审 | `process/gate/2510631109-launchspec-ai-gate-1-prd-spec.md` | 修改后通过 | 独立真人评审人复述未完成 |
+| Gate 1 PRD/SPEC 互审 | `process/gate/2510631109-launchspec-ai-gate-1-prd-spec.md` | 修改后通过 | 独立评审人的文档阅读式复述未完成（已有独立使用者的使用后复述作为部分证据） |
 | Gate 2 设计审计 | `process/gate/2510631109-launchspec-ai-gate-2-design.md` | 修改后通过 | F-1 缺测试先行红绿证据；F-2 独立审计人未指派 |
 | Gate 3 交付审计 | `process/gate/2510631109-launchspec-ai-gate-3-delivery.md` | 修改后通过 | F-2 提交粒度缺口（F-1 独立真人 UAT 已于 07-29 补齐） |
 
@@ -155,4 +155,5 @@ AI 使用边界：AI 承担样板代码、测试脚手架与文档草稿；范�
 
 1. 后续新增功能真实执行红绿流程，留独立的红、绿两次提交。
 2. 若需支持并发，按 ADR-001 的 later 路径把 `repository.ts` 替换为 SQLite/PostgreSQL adapter。
-3. 补独立评审人对 PRD/SPEC 的复述记录（Gate 1 未满足项）。
+3. 补独立评审人对 PRD/SPEC 的**文档阅读式**复述记录（Gate 1 未满足项）。
+4. 依据 TYX 的使用后复述反馈，强化 PRD 第 1 节与界面对「人工编辑与审查为必经环节」的表述，改后重新验证复述效果。
