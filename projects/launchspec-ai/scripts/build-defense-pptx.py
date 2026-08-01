@@ -244,15 +244,16 @@ table(s, [
     ["ESLint + next build", "静态检查与生产构建", "通过，8 条路由"],
     ["本地 API UAT（curl）", "health、非法创建、创建、生成、读取、保存、审查、导出、404", "9 场景全 passed"],
     ["浏览器双会话自动化", "边界输入、编辑持久化、并发可见性、20 张截图", "22 / 22"],
-    ["项目本人人工 UAT", "6 个场景", "PASS WITH EVIDENCE LIMITS"],
-], top=2.4, height=2.9, col_widths=[3.3, 5.6, 2.5], size=13)
-tf = textbox(s, 0.95, 5.85, 11.4, 1.4)
-para(tf, "最能证明质量的一项：人工 UAT 发现了自动化完全没发现的两个阻塞问题。",
+    ["项目本人人工 UAT", "6 个场景", "PASS WITH LIMITS"],
+    ["独立真人结对 UAT", "测试者 TYX（未参与开发）· Edge · 7 个场景", "通过（U-03 复测）"],
+], top=2.4, height=3.1, col_widths=[3.3, 5.6, 2.5], size=13)
+tf = textbox(s, 0.95, 5.95, 11.4, 1.4)
+para(tf, "最能证明质量的一项：两次真人验收都抓到了自动化完全没发现的问题。",
      size=16, bold=True, color=ACCENT, space_after=8, first=True)
-para(tf, "13 个测试全绿、API 全部 200 的情况下，浏览器打开却是白屏——这正是下一页要讲的决策推翻。",
+para(tf, "13 个测试全绿、API 全部 200 的情况下，浏览器打开却是白屏；真人测试者 TYX 又发现生成蓝图首次不可用。",
      size=14, color=MUTED)
-notes(s, "回答『哪个测试最能证明系统质量』：不是单元测试，是人工 UAT。因为它抓到了其他所有层都抓不到的问题。"
-         "这是本项目最有说服力的一条经验。")
+notes(s, "回答『哪个测试最能证明系统质量』：不是单元测试，是人工 UAT。两次真人验收各抓到一个自动化看不见的问题——"
+         "7-23 本人发现白屏与 hydration 失败，7-29 测试者 TYX 发现生成蓝图不可用。这是本项目最有说服力的经验。")
 
 # ---------------------------------------------------------------- 8 关键决策推翻
 s = slide()
@@ -297,19 +298,19 @@ table(s, [
     ["Gate", "结论", "未满足项"],
     ["Gate 1　PRD/SPEC 互审", "修改后通过", "独立真人评审人复述未完成"],
     ["Gate 2　设计审计", "修改后通过", "缺测试先行红绿证据；独立审计人未指派"],
-    ["Gate 3　交付审计", "修改后通过", "独立真人结对 UAT 未完成；提交粒度缺口"],
+    ["Gate 3　交付审计", "修改后通过", "提交粒度缺口（真人 UAT 已于 07-29 补齐）"],
 ], top=2.4, height=1.85, col_widths=[3.6, 2.4, 5.4], size=14)
 tf = textbox(s, 0.95, 4.5, 11.4, 2.5)
-para(tf, "两个确认存在的缺口", size=17, bold=True, color=WARN, space_after=10, first=True)
-para(tf, "① 提交 4414ea4 一次性引入 79 文件、11407 行，覆盖 C1–C7 全部任务卡，"
+para(tf, "确认存在的缺口", size=17, bold=True, color=WARN, space_after=10, first=True)
+para(tf, "提交 4414ea4 一次性引入 79 文件、11407 行，覆盖 C1–C7 全部任务卡，"
          "无法逐卡对应，也无法体现红绿顺序。", size=14, space_after=8)
-para(tf, "② 独立真人结对 UAT 仍是空模板；现有三类 UAT 分别是自动化 CLI、自动化浏览器、"
-         "项目本人验收，都不构成未参与开发者的独立反馈。", size=14, space_after=12)
-para(tf, "缺口①不做补救——补写『先失败的提交』等同伪造历史，属课程红线。"
+para(tf, "已补齐：独立真人结对 UAT 于 2026-07-29 由未参与开发的测试者 TYX 完成，"
+         "发现并复测了 1 项阻断问题。", size=14, space_after=12)
+para(tf, "提交粒度缺口不做补救——补写『先失败的提交』等同伪造历史，属课程红线。"
          "处理方式是如实声明，并以集中期 arena-lite 的红绿证据说明方法已掌握。",
      size=15, bold=True, color=ACCENT)
 notes(s, "主动交代缺口，不等评委问。特别是提交粒度问题——要讲清楚为什么不补：补了就是伪造。"
-         "这个态度本身就是课程要考的工程诚实。")
+         "这个态度本身就是课程要考的工程诚实。真人 UAT 已补齐，可正面说明。")
 
 # ---------------------------------------------------------------- 11 限制与下一步
 s = slide()
@@ -320,8 +321,7 @@ para(tf, "1　单机本地 MVP，无账号、权限、支付、多人实时协�
 para(tf, "2　JSON 存储不支持多进程并发写入与复杂查询。", size=14, space_after=9)
 para(tf, "3　自动化测试固定 demo provider；demo 不是真实模型能力证据。", size=14, space_after=9)
 para(tf, "4　真实模型证据为单次脱敏运行，非持续可用性保证。", size=14, space_after=9)
-para(tf, "5　未完成独立真人结对 UAT。", size=14, space_after=9)
-para(tf, "6　未保留测试先行的红绿提交序列。", size=14)
+para(tf, "5　未保留测试先行的红绿提交序列。", size=14)
 
 tf = textbox(s, 6.85, 2.35, 5.5, 4.2)
 para(tf, "用户如何绕行", size=17, bold=True, color=ACCENT, space_after=11, first=True)
@@ -329,7 +329,7 @@ para(tf, "并发问题 → 单人单进程使用。", size=14, space_after=9)
 para(tf, "真实模型不可用 → 切回 demo，界面与流程仍可用，但结果须标注为非真实模型。",
      size=14, space_after=18)
 para(tf, "如果再给一周", size=17, bold=True, color=ACCENT, space_after=11)
-para(tf, "补　独立真人结对 UAT 与评审人复述。", size=14, space_after=9)
+para(tf, "补　独立评审人对 PRD/SPEC 的复述记录。", size=14, space_after=9)
 para(tf, "补　新增功能真实走一次红绿流程，留独立的红、绿两次提交。", size=14, space_after=9)
 para(tf, "砍　不做多人协作与云端存储，维持单机边界。", size=14)
 notes(s, "回答『再给一周砍什么补什么』。补的是证据链缺口，砍的是范围诱惑——"
@@ -344,15 +344,15 @@ table(s, [
      "docs/PRD.md"],
     ["哪个架构决策被推翻？", "Turbopack 改回 Webpack；人工 UAT 发现",
      "gate-3-delivery.md"],
-    ["哪个测试最能证明质量？", "人工 UAT，抓到自动化看不到的白屏与 hydration 故障",
-     "human-uat-2026-07-23.md"],
+    ["哪个测试最能证明质量？", "两次真人验收各抓到一个自动化看不见的问题",
+     "human-pair-uat-2026-07-29.md"],
     ["哪段 AI 生成内容被修改？", "蓝图字段人工编辑并落盘，导出含人工标记",
      "real-ai-2026-07-22/export.md"],
     ["密钥如何保护？", "运行时环境读取 + check.sh 内置扫描 + 数据文件 Git 忽略",
      "scripts/check.sh"],
     ["再给一周做什么？", "补独立真人 UAT 与红绿序列；砍多人协作",
      "final-report.md §12"],
-    ["当前已知限制？", "单机、无并发、demo 非真实证据、两项证据缺口",
+    ["当前已知限制？", "单机、无并发、demo 非真实证据、红绿序列缺口",
      "final-report.md §12"],
 ], top=2.4, height=4.0, col_widths=[3.5, 5.3, 2.6], size=12)
 notes(s, "备份页，正常不讲。被问到时直接定位到对应文件。所有回答都能落到仓库内的具体路径，"

@@ -12,8 +12,8 @@
 
  Test Files  6 passed (6)
       Tests  13 passed (13)
-   Start at  00:17:58
-   Duration  270ms (transform 192ms, setup 0ms, import 282ms, tests 48ms, environment 0ms)
+   Start at  01:45:38
+   Duration  247ms (transform 190ms, setup 0ms, import 267ms, tests 45ms, environment 0ms)
 
 
 > msd-launchspec-ai@0.1.0 lint
@@ -26,12 +26,12 @@
 ▲ Next.js 16.2.10 (webpack)
 
   Creating an optimized production build ...
-✓ Compiled successfully in 1237ms
+✓ Compiled successfully in 995ms
   Running TypeScript ...
-  Finished TypeScript in 1420ms ...
+  Finished TypeScript in 1407ms ...
   Collecting page data using 7 workers ...
   Generating static pages using 7 workers (0/3) ...
-✓ Generating static pages using 7 workers (3/3) in 93ms
+✓ Generating static pages using 7 workers (3/3) in 92ms
   Finalizing page optimization ...
   Collecting build traces ...
 

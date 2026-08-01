@@ -1,11 +1,11 @@
 # Gate 3 Delivery Audit（交付审计）2510631109-launchspec-ai
 
-- Reviewer（评审者）: 徐驰宇（项目本人自审）；**独立真人结对 UAT 尚未完成**
+- Reviewer（评审者）: 徐驰宇（项目本人自审）；独立真人结对 UAT 已由测试者 TYX 于 2026-07-29 完成
 - Date（日期）: 2026-08-02
 - Delivery ID（交付标识）: 2510631109-launchspec-ai
 - Check command（检查命令）: `npm run check`（等价 `bash scripts/check.sh`：`vitest run` → `eslint` → `next build` → `git diff --check` → 密钥正则扫描）
 - Check result（检查结果）: **通过**。`Test Files 6 passed (6)`、`Tests 13 passed (13)`、ESLint 无告警、`next build` 编译成功（TypeScript 1402ms，8 条路由）、`git diff --check` 无输出、密钥扫描无命中，脚本以 `check: passed` 结束，退出码 `0`
-- UAT scenarios（UAT 场景数）: 本地 API UAT 9 个场景全部 passed；浏览器双会话自动化 UAT 22/22；项目本人人工 UAT 6 个场景全部 pass
+- UAT scenarios（UAT 场景数）: 本地 API UAT 9 个场景全部 passed；浏览器双会话自动化 UAT 22/22；项目本人人工 UAT 6 个场景全部 pass；**独立真人结对 UAT 7 个场景通过（U-03 修复后复测）**
 - Known limits（已知限制）: 单机本地 MVP，无账号、权限、支付、多人实时协作与异步队列；JSON 文件存储不支持多进程并发；自动化测试固定使用 demo provider，不依赖真实模型输出；真实模型证据为 2026-07-22 的一次脱敏运行
 - Secret scan result（凭据扫描结果）: **无真实凭据**。`scripts/check.sh` 内置正则覆盖 `sk-`、`AKIA`、`gh[pousr]_`、`github_pat_`、`glpat-` 与各类 PRIVATE KEY 头，本次扫描无命中
 
@@ -18,6 +18,7 @@
 | 本地 API UAT | `process/uat/launchspec-ai-draft-uat.md`、`evidence/local-uat/uat-status.txt` |
 | 浏览器双会话 UAT | `evidence/pair-uat-2026-07-22/uat_results.json` |
 | 本人人工 UAT | `process/uat/launchspec-ai-human-uat-2026-07-23.md` |
+| 独立真人结对 UAT | `process/uat/launchspec-ai-human-pair-uat-2026-07-29.md` |
 | 真实模型运行 | `evidence/real-ai-2026-07-22/README.md` |
 | 早期失败记录（保留） | `evidence/real-ai-2026-07-20/README.md` |
 
@@ -43,14 +44,18 @@
 
 ## Findings（审计发现）
 
-### F-1 独立真人结对 UAT 未完成
+### F-1 独立真人结对 UAT —— 已于 2026-07-29 完成
 
-`process/uat/human-pair-uat-template.md` 仍是空模板（测试者、日期、设备、7 个场景结果、反馈栏均为 `TODO`）。现有三类 UAT 的性质分别是：自动化 CLI、自动化浏览器双会话、项目本人人工验收——都不构成「未参与开发者的独立反馈」。该项已在 `PROCESS.md` 与人工 UAT 记录中如实标注，未冒充完成。
+未参与开发的测试者 TYX 使用 Edge 完成主链路操作，记录见 `process/uat/launchspec-ai-human-pair-uat-2026-07-29.md`。
 
-**处理**：属人工授权节点。若课程要求，需另一位真实测试者按模板补齐脱敏标识、日期、场景结果与至少一条实际反馈。
+测试者发现 1 项阻断问题：**U-03 生成蓝图首次不可用、蓝图内容无法显示**；处理后重新执行 U-03 至 U-07 全部通过，其余 6 项一次通过。测试者未提出其他问题，第 1、3 项反馈未作表述，记录中如实留空未代写。
+
+需注意：该次处理**未产生新的业务代码提交**（仓库在 `6b2fe9c` 与 `5a3b56d` 之间无提交，工作区干净），因此记录中未引用修复提交号，避免与实际提交历史不符。
+
+至此三类自动化 UAT 与两类真人验收齐备，本项由「未完成」转为「已完成」。
 
 ### F-2 提交粒度不满足手册要求（承接 Gate 2 的 F-1）
 
 `4414ea4` 单次提交 79 文件、11407 行，覆盖任务卡 C1–C7 全部内容，无法做到「提交或 PR 能对应任务卡」，也无法体现测试先行的红绿顺序。此项已在 Gate 2 记录影响与处理计划，此处不重复判定为通过。
 
-- Decision after audit（审计后结论）: **修改后通过**。可运行仓库、本地检查、UAT 覆盖、密钥扫描、README 可独立启动与被推翻决策六项均满足并有产物；F-1 为待人工授权节点，F-2 为已确认且不可事后补造的历史缺口，二者均如实记录，不计入通过项。
+- Decision after audit（审计后结论）: **修改后通过**。可运行仓库、本地检查、UAT 覆盖、密钥扫描、README 可独立启动与被推翻决策六项均满足并有产物；F-1 独立真人结对 UAT 已于 2026-07-29 补齐；F-2 为已确认且不可事后补造的历史缺口，如实记录，不计入通过项。

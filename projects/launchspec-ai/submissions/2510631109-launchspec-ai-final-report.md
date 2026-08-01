@@ -95,7 +95,7 @@ npm run dev
 |---|---|---|---|
 | Gate 1 PRD/SPEC 互审 | `process/gate/2510631109-launchspec-ai-gate-1-prd-spec.md` | 修改后通过 | 独立真人评审人复述未完成 |
 | Gate 2 设计审计 | `process/gate/2510631109-launchspec-ai-gate-2-design.md` | 修改后通过 | F-1 缺测试先行红绿证据；F-2 独立审计人未指派 |
-| Gate 3 交付审计 | `process/gate/2510631109-launchspec-ai-gate-3-delivery.md` | 修改后通过 | F-1 独立真人结对 UAT 未完成；F-2 提交粒度缺口 |
+| Gate 3 交付审计 | `process/gate/2510631109-launchspec-ai-gate-3-delivery.md` | 修改后通过 | F-2 提交粒度缺口（F-1 独立真人 UAT 已于 07-29 补齐） |
 
 Gate 1 含两轮 Loop Engineering 审计记录：Loop-1 AI 能力与规格边界复审（2026-07-22）、Loop-2 运行时可用性与验收复审（2026-07-23）。两轮均有证据命令与产物，且 Loop-2 的假设被实际推翻。
 
@@ -106,12 +106,12 @@ Gate 1 含两轮 Loop Engineering 审计记录：Loop-1 AI 能力与规格边界
 | 本地 API UAT | `process/uat/launchspec-ai-draft-uat.md` | 9 场景 | 全部 passed |
 | 浏览器双会话自动化 | `evidence/pair-uat-2026-07-22/uat_results.json` | 22 项 + 20 截图 | 22/22 |
 | 项目本人人工 UAT | `process/uat/launchspec-ai-human-uat-2026-07-23.md` | 6 场景 | PASS WITH EVIDENCE LIMITS |
-| 独立真人结对 UAT | `process/uat/human-pair-uat-template.md` | — | **未完成（空模板）** |
+| 独立真人结对 UAT | `process/uat/launchspec-ai-human-pair-uat-2026-07-29.md` | 7 场景（测试者 TYX） | 通过（U-03 修复后复测） |
 
 主路径：health → 创建 `201` → 生成 `200` → 读取 `200` → 保存 `200` → 审查 `200` → 导出 `200`。
 错误路径：非法创建 `400`、项目不存在 `404` 已落盘；`409`、`500`、`502/503` 已在 SPEC 定义，其中 `502/503` 在真实上游故障中被实际观测。
 
-人工 UAT 发现并修复了两个自动化测试无法发现的阻塞问题（Turbopack 模块解析、dev origin 拦截）。
+人工验收发现了两批自动化测试无法发现的问题：本人 UAT（2026-07-23）发现 Turbopack 模块解析与 dev origin 拦截两个阻塞；独立真人 UAT（2026-07-29，测试者 TYX）发现「生成蓝图」首次不可用、内容不显示，处理后复测通过。
 
 ## 9. Evidence 索引
 
@@ -147,14 +147,12 @@ AI 使用边界：AI 承担样板代码、测试脚手架与文档草稿；范�
 2. JSON 存储不支持多进程并发写入与复杂查询。
 3. 自动化测试固定 demo provider；demo 不是真实模型能力证据。
 4. 真实模型证据为单次脱敏运行，非持续可用性保证。
-5. **未完成独立真人结对 UAT**。
-6. **未保留测试先行的红绿提交序列**；`4414ea4` 为 79 文件、11407 行的单次大提交，不满足「提交对应任务卡」的要求。
+5. **未保留测试先行的红绿提交序列**；`4414ea4` 为 79 文件、11407 行的单次大提交，不满足「提交对应任务卡」的要求。
 
-第 5、6 项属于确认存在的交付缺口，已在 Gate 2、Gate 3 与第 2 次周志中如实记录。第 6 项不可事后补造——补写「先失败的提交」等同伪造历史，属课程红线。
+第 5 项属于确认存在的交付缺口，已在 Gate 2、Gate 3 与第 2 次周志中如实记录。该项不可事后补造——补写「先失败的提交」等同伪造历史，属课程红线。
 
 **后续计划**
 
-1. 补一次独立真人结对 UAT，按 `human-pair-uat-template.md` 留脱敏标识、日期、场景结果与实际反馈。
-2. 后续新增功能真实执行红绿流程，留独立的红、绿两次提交。
-3. 若需支持并发，按 ADR-001 的 later 路径把 `repository.ts` 替换为 SQLite/PostgreSQL adapter。
-4. 补独立评审人对 PRD/SPEC 的复述记录。
+1. 后续新增功能真实执行红绿流程，留独立的红、绿两次提交。
+2. 若需支持并发，按 ADR-001 的 later 路径把 `repository.ts` 替换为 SQLite/PostgreSQL adapter。
+3. 补独立评审人对 PRD/SPEC 的复述记录（Gate 1 未满足项）。

@@ -28,6 +28,7 @@
 - API UAT：`scripts/uat-smoke.sh`（`npm run uat`）
 - 自动化 API UAT：`process/uat/launchspec-ai-draft-uat.md`
 - 本人人工 UAT：`process/uat/launchspec-ai-human-uat-2026-07-23.md`（结论 `PASS WITH EVIDENCE LIMITS`；不冒充独立同伴反馈）
+- **独立真人结对 UAT**：`process/uat/launchspec-ai-human-pair-uat-2026-07-29.md`（测试者 TYX，未参与开发；U-03 生成蓝图首次不可用，修复后复测通过，其余 6 项一次通过）
 - 真实模型生成与不同模型审查：`evidence/real-ai-2026-07-22/`
 - 人工验收截图：`evidence/human-uat-2026-07-23/screenshots/`
 - 浏览器双会话自动化 UAT：`evidence/pair-uat-2026-07-22/uat_results.json`（22/22；不能替代真人同伴反馈）
@@ -53,7 +54,10 @@
 ## 尚待人工完成（不得虚构）
 
 1. 若课程要求小组提交，需 `MSD_GROUP_ID` 并按 `docs/PROJECT-IDENTITY.md` 规则改名。
-2. 独立真人结对 UAT：需一名未参与开发同伴按 `process/uat/human-pair-uat-template.md` 补脱敏标识、日期与真实反馈；本人人工验收不替代该项。
-3. 独立评审人对 PRD/SPEC 的复述记录（Gate 1 未满足项）。
-4. 测试先行红绿序列：本项目未保留，不可事后补造；后续新增功能时真实执行并留独立的红、绿两次提交。
-5. 学院系统周志提交与最终答辩时间。
+2. 独立评审人对 PRD/SPEC 的复述记录（Gate 1 未满足项）。
+3. 测试先行红绿序列：本项目未保留，不可事后补造；后续新增功能时真实执行并留独立的红、绿两次提交。
+4. 学院系统周志提交与最终答辩时间。
+
+## 已完成（原待办项）
+
+- 独立真人结对 UAT：2026-07-29 由未参与开发的测试者 TYX 完成，记录见 `process/uat/launchspec-ai-human-pair-uat-2026-07-29.md`。
