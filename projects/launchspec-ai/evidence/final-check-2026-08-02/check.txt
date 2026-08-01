@@ -1,0 +1,52 @@
+
+> msd-launchspec-ai@0.1.0 check
+> bash scripts/check.sh
+
+
+> msd-launchspec-ai@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.10 /Users/mac/Desktop/短学期实践/msd-work/msd-2510631109-arena-lite/projects/launchspec-ai
+
+
+ Test Files  6 passed (6)
+      Tests  13 passed (13)
+   Start at  00:17:58
+   Duration  270ms (transform 192ms, setup 0ms, import 282ms, tests 48ms, environment 0ms)
+
+
+> msd-launchspec-ai@0.1.0 lint
+> eslint
+
+
+> msd-launchspec-ai@0.1.0 build
+> next build --webpack
+
+▲ Next.js 16.2.10 (webpack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1237ms
+  Running TypeScript ...
+  Finished TypeScript in 1420ms ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/3) ...
+✓ Generating static pages using 7 workers (3/3) in 93ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /api/health
+├ ƒ /api/projects
+├ ƒ /api/projects/[id]
+├ ƒ /api/projects/[id]/export
+├ ƒ /api/projects/[id]/generate
+└ ƒ /api/projects/[id]/review
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+check: passed

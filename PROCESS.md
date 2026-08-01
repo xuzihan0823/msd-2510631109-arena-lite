@@ -34,9 +34,12 @@
 ## Verification（验证）
 
 - Local CI command（本地 CI 命令）: `scripts/check.sh`
+- Local CI interpreter（本地 CI 解释器）: `/opt/miniconda3/bin/python`，Python 3.13.12；`msd-work/.venv` 为 Python 3.9.6，不满足代码使用的 `X | None` 类型语法，勿用于本项目。
+- Final check evidence（最终检查证据）: `evidence/2510631109-D11-check.txt`（`22 passed`、`local checks passed`）
+- Whitespace check evidence（空白检查证据）: `evidence/2510631109-D11-diff-check.txt`（无输出）
 - API smoke evidence（API 冒烟证据）: `evidence/2510631109-D11-uat-status.txt`
 - Model failure mock evidence（模型失败 mock 证据）: `evidence/2510631109-D11-model-failure-mock.txt`
-- Security scan evidence（安全扫描证据）: `evidence/2510631109-D11-secret-scan.txt`
+- Security scan evidence（安全扫描证据）: `evidence/2510631109-D11-secret-scan.txt`；命中 23 行均为文档安全声明与 `Bearer` 协议关键字，逐类确认与结论见 `process/uat/2510631109-uat.md` 的最终安全扫描章节。
 - D11 verification baseline（D11 验证基线）: `63d071a`；D11 本地验证在该提交的工作树上完成。D11 证据已提交为 `5dc11fb` 并推送至 `origin/feat/2510631109-local-ci`。
 
 ## Known Limits（已知限制）

@@ -87,6 +87,8 @@ npm run dev
 - `process/task_cards/`：开发任务卡
 - `process/sprint/`：冲刺记录
 - `process/uat/`：UAT 记录
+- `process/gate/`：三次正式 Gate 记录
+- `submissions/`：两次周志、最终报告与答辩 PPT
 - `PROCESS.md`：评审入口索引
 
-正式提交期命名依赖课程公布的 `MSD_GROUP_ID`。当前待填写项见 `docs/PROJECT-IDENTITY.md`，不会用虚构组号替代。
+交付标识为 `2510631109-launchspec-ai`（个人提交口径）。若课程公布 `MSD_GROUP_ID` 并要求小组命名，按 `docs/PROJECT-IDENTITY.md` 的规则改名即可。
