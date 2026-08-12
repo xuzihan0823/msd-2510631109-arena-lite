@@ -1,0 +1,11 @@
+health=200
+invalid_project=400
+create_project=201
+generate_blueprint=200
+get_project=200
+save_blueprint=200
+review_blueprint=200
+export_markdown=200
+missing_project=404
+project_id=ea3c1b48-d118-4c27-be11-56bf10379d5f
+provider=demo (not real model evidence)

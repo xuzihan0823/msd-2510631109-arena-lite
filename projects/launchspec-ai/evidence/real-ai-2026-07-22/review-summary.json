@@ -1,0 +1,25 @@
+{
+  "phase": "review",
+  "executedDate": "2026-07-22",
+  "providerMode": "openai-compatible",
+  "model": "gpt-5.6-terra",
+  "projectId": "34c2071a-a3f1-46d3-95e8-02f20a5005d6",
+  "http": 200,
+  "result": "success",
+  "reviewSource": "model",
+  "readiness": "needs-revision",
+  "summary": "蓝图的核心用户、MVP功能、非目标和AI辅助定位基本一致，且已明确人工确认原则。但验收标准仍缺少关键质量、权限、数据生命周期、敏感信息处理、生成失败降级和人工确认可追溯性的可测试定义；部分风险缓解措施超出当前MVP描述或缺乏实现边界，尚不适合直接进入开发验收。",
+  "severityCounts": { "blocking": 4, "warning": 4, "info": 1 },
+  "findings": [
+    { "id": "AC-001", "severity": "blocking", "area": "验收标准" },
+    { "id": "AC-002", "severity": "blocking", "area": "验收标准" },
+    { "id": "AC-003", "severity": "blocking", "area": "数据与隐私" },
+    { "id": "RISK-001", "severity": "blocking", "area": "敏感信息边界" },
+    { "id": "ARCH-001", "severity": "warning", "area": "权限与协作范围" },
+    { "id": "AC-004", "severity": "warning", "area": "生成可靠性" },
+    { "id": "AC-005", "severity": "warning", "area": "版本与导出" },
+    { "id": "SCOPE-001", "severity": "warning", "area": "范围" },
+    { "id": "AI-001", "severity": "info", "area": "AI人工确认边界" }
+  ],
+  "note": "findings 全文与整改建议见同目录 export.md；本文件仅保存结构化摘要，不含任何凭据或私有地址。"
+}

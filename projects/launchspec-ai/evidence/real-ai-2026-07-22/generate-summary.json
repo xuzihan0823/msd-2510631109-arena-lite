@@ -1,0 +1,20 @@
+{
+  "phase": "generate",
+  "executedDate": "2026-07-22",
+  "providerMode": "anthropic-compatible",
+  "model": "gpt-5.6-sol",
+  "projectId": "34c2071a-a3f1-46d3-95e8-02f20a5005d6",
+  "http": 200,
+  "result": "success",
+  "blueprintValidated": true,
+  "sections": {
+    "targetUsers": 3,
+    "mvpScope": 5,
+    "nonGoals": 5,
+    "acceptanceCriteria": 4,
+    "risks": 5,
+    "architecture": 5,
+    "aiBoundary": 5
+  },
+  "note": "结果通过项目 Blueprint 结构校验并落盘；输入为脱敏测试数据；未记录任何凭据或私有地址。"
+}
