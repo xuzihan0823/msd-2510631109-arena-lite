@@ -127,9 +127,12 @@ rule(s, 4.72, width=3.2)
 tf2 = textbox(s, 0.95, 5.05, 11.4, 1.2)
 para(tf2, "短学期实践 · 提交期自选项目答辩　|　徐驰宇　学号 2510631109",
      size=15, color=MUTED, space_after=4, first=True)
-para(tf2, "Next.js 16 · TypeScript · 本地 JSON 存储　|　2026-08-02", size=13, color=MUTED)
+para(tf2, "Next.js 16 · TypeScript · 本地 JSON 存储　|　2026-08-02", size=13, color=MUTED,
+     space_after=4)
+para(tf2, "最终冻结提交　ab364f0　|　分支 feat/2510631109-local-ci", size=12, color=MUTED)
 notes(s, "自我介绍与项目一句话定位。强调这是提交期自选项目，与集中期跟练的 arena-lite "
-         "在用户、场景、接口和技术栈上完全不同。控制在 30 秒内进入正题。")
+         "在用户、场景、接口和技术栈上完全不同。控制在 30 秒内进入正题。"
+         "若被问最终版本，冻结提交号 ab364f0 已写在封面，详见最终报告第 1 节。")
 
 # ---------------------------------------------------------------- 2 问题与价值
 s = slide()
@@ -357,6 +360,8 @@ table(s, [
      "final-report.md §12"],
     ["当前已知限制？", "单机、无并发、demo 非真实证据、红绿序列缺口",
      "final-report.md §12"],
+    ["最终版本冻结在哪个提交？", "ab364f0（2026-08-02），之后无内容变更",
+     "final-report.md §1"],
 ], top=2.4, height=4.0, col_widths=[3.5, 5.3, 2.6], size=12)
 notes(s, "备份页，正常不讲。被问到时直接定位到对应文件。所有回答都能落到仓库内的具体路径，"
          "不靠临场发挥。")

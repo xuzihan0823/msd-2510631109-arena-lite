@@ -13,8 +13,17 @@
 | 仓库地址 | `https://github.com/xuzihan0823/msd-2510631109-arena-lite` |
 | 项目路径 | `projects/launchspec-ai` |
 | 分支 | `feat/2510631109-local-ci` |
-| 报告撰写时 HEAD | `6b2fe9c` |
-| 最终冻结提交号 | 见收官提交的 `git log --oneline -1` |
+| 报告初稿撰写时 HEAD | `6b2fe9c`（2026-07-23） |
+| **最终冻结提交号** | **`ab364f051ff81925fa9964539a6663d7bf0390ab`**（短号 `ab364f0`，2026-08-02） |
+
+冻结口径：`ab364f0` 是本项目最后一次**内容提交**（记录测试者复述与 PRD 定位缺陷，同步 Gate 1、第 1 次周志、最终报告与答辩 PPT）。代码、测试、证据文件与全部评审结论均冻结于此。该提交之后只有一次提交号补录：把本字段与第 2 次周志第 8 节的占位表述替换为真实 SHA，并在答辩 PPT 封面与 Q&A 备份页加入同一 SHA；不改动任何代码、测试、证据或结论。
+
+复核命令：
+
+```bash
+git log --oneline -1 ab364f0
+git show --stat ab364f0
+```
 
 集中期跟练项目 `arena-lite` 位于仓库根目录，自选项目 LaunchSpec AI 位于 `projects/launchspec-ai`，两者主题、接口与技术栈完全不同。
 
